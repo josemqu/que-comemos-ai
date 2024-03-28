@@ -22,11 +22,22 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   │   └── App.svelte
+│   │   └── StepUpload.svelte
+│   │   └── StepLoading.svelte
+│   │   └── StepLoaded.svelte
 │   ├── layouts/
 │   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   │   └── index.astro
+│   │   └── api/
+│   │       └── ask.ts
+│   │       └── upload.ts
+│   ├── utils/
+│   │   └── sse.ts
+│   │
+│   ├── env.d.ts
+│   └── store.ts
 └── package.json
 ```
 
