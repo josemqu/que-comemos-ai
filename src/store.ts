@@ -7,7 +7,7 @@ export const APP_STATUS = {
   ERROR: -1,
 };
 
-export const appStatus = writable(APP_STATUS.INIT);
+export const appStatus = writable(APP_STATUS.LOADED);
 export const appStatusInfo = writable({
   id: "2df1b31e655d73f66f65d87258c96574",
   img_url:
