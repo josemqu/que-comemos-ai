@@ -45,20 +45,24 @@
   };
 </script>
 
-<div class="flex justify-center align-middle">
+<div class="flex align-middle justify-center max-w-80 m-4">
   <img
     src={img_url}
     alt="Image of food"
-    class="rounded max-w-[400px] h-auto aspect-[4/3] object-cover"
+    class="rounded h-auto aspect-[4/3] object-cover"
     aria-hidden="true"
   />
 </div>
 
-<form class="m-8" on:submit={handleSubmit}>
-  <Label for="question" class="block mb-2">
+<form class="w-full m-8" on:submit={handleSubmit}>
+  <Label for="question" class="block mb-2 pl-5">
     Pregunta lo que quieras saber...
   </Label>
-  <Input id="question" placeholder="¿Cuántas calorías tiene el plato?"></Input>
+  <Input
+    id="question"
+    class="ml-2"
+    placeholder="¿Cuántas calorías tiene el plato?"
+  ></Input>
 </form>
 
 {#if loading}
