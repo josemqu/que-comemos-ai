@@ -3,8 +3,6 @@
   import { appStatusInfo, setAppStatusError } from "../store";
   const { id, img_url } = $appStatusInfo;
 
-  console.log(img_url);
-
   let answer = "";
   let loading = false;
 
@@ -70,5 +68,5 @@
 {/if}
 
 {#if answer}
-  <p class="my-4">{answer}</p>
+  <p class="m-4">{answer}</p>
 {/if}

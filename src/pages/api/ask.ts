@@ -9,7 +9,6 @@ const openai = new OpenAI({
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
-  console.log(url);
   const img_url = url.searchParams.get("img_url");
   const id = url.searchParams.get("id");
   const question = url.searchParams.get("question");
@@ -23,8 +22,6 @@ export const GET: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({ message: "No question provided" }), {
       status: 400,
     });
-
-  console.log(url);
 
   return responseSSE({ request }, async (sendEvent) => {
     const response = await openai.chat.completions.create({
