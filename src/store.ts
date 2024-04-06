@@ -12,8 +12,11 @@ const envMode =
     ? "development"
     : "production";
 
+const initialStatus =
+  envMode === "development" ? APP_STATUS.LOADED : APP_STATUS.INIT;
+
 console.log({ envMode });
-export const appStatus = writable(APP_STATUS.LOADED);
+export const appStatus = writable(initialStatus);
 export const appStatusInfo = writable({
   id: "88632685d41375f2ccb15817d5b2bff0",
   img_url:
