@@ -1,13 +1,12 @@
 <script>
   import { Input, Label, Spinner } from "flowbite-svelte";
   import { appStatusInfo, setAppStatusError } from "../store";
-  const { id, img_url, text } = $appStatusInfo;
+  const { id, img_url, text, envMode } = $appStatusInfo;
 
   let answer = "";
   let loading = false;
-  let isLocalhost =
-    import.meta.env.IS_LOCALHOST === "True" ||
-    window?.location?.hostname === "localhost";
+
+  // console.log({ envMode });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,7 +83,7 @@
       {answer}
     </p>
   </div>
-{:else if isLocalhost}
+{:else if envMode}
   <div class="px-4">
     <p
       class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
