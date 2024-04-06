@@ -6,6 +6,8 @@
   let answer = "";
   let loading = false;
 
+  console.log({ envMode });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
