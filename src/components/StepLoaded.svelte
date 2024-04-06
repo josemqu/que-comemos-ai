@@ -5,8 +5,9 @@
 
   let answer = "";
   let loading = false;
-  // create a state for local host
-  let isLocalHost = window.location.hostname === "localhost";
+  let isLocalhost =
+    import.meta.env.IS_LOCALHOST === "True" ||
+    window?.location?.hostname === "localhost";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,7 +84,7 @@
       {answer}
     </p>
   </div>
-{:else if isLocalHost}
+{:else if isLocalhost}
   <div class="px-4">
     <p
       class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
