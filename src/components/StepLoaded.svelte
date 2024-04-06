@@ -83,7 +83,7 @@
       {answer}
     </p>
   </div>
-{:else if envMode}
+{:else if envMode === "development"}
   <div class="px-4">
     <p
       class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
