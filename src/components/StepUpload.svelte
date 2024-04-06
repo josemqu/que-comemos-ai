@@ -13,7 +13,7 @@
 
   let videoSource = null;
   let loading = false;
-  const obtenerVideoCamara = async () => {
+  const getVideoCamera = async () => {
     try {
       loading = true;
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -72,5 +72,5 @@
   {/if} -->
 <!-- svelte-ignore a11y-media-has-caption -->
 <!-- <video bind:this={videoSource} />
-  <button on:click={obtenerVideoCamara}>CLICK</button>
+  <button on:click={getVideoCamera}>CLICK</button>
 </div> -->

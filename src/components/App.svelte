@@ -12,17 +12,17 @@
   <StepLoading />
 {:else if $appStatus === APP_STATUS.LOADED}
   <StepLoaded />
-  <Alert>
+  <Alert color="green" class="mx-4">
     <span class="font-medium">¡Carga exitosa!</span>
     La imagen ha sido cargada exitosamente.
   </Alert>
 {:else if $appStatus === APP_STATUS.ERROR}
-  <Alert>
+  <Alert color="red" class="mx-4">
     <span class="font-medium">Error alert!</span>
     Hay un error en la aplicación.
   </Alert>
 {:else}
-  <Alert>
+  <Alert color="red" class="mx-4">
     <span class="font-medium">Algo malo ha pasado!</span>
     Este estado de la aplicación no está reconocido.
   </Alert>

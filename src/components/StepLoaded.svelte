@@ -10,7 +10,7 @@
     e.preventDefault();
 
     loading = true;
-
+    answer = "";
     const question = e.target.question.value;
 
     const searchParams = new URLSearchParams();
@@ -25,7 +25,6 @@
 
       eventSource.onmessage = (event) => {
         loading = false;
-
         const incomingData = JSON.parse(event.data || {});
 
         if (incomingData === "__END__") {
@@ -38,7 +37,6 @@
     } catch (error) {
       setAppStatusError();
     } finally {
-      loading = false;
     }
   };
 </script>
@@ -52,21 +50,34 @@
   />
 </div>
 
-<form class="w-full m-8" on:submit={handleSubmit}>
-  <Label for="question" class="block mb-2 pl-5">
+<form class="max-w-80 w-full mx-4 px-4" on:submit={handleSubmit}>
+  <Label for="question" class="font-medium block my-2">
     Pregunta lo que quieras saber...
   </Label>
   <Input
     id="question"
-    class="ml-2"
+    class=""
+    required
     placeholder="¿Cuántas calorías tiene el plato?"
   ></Input>
 </form>
 
 {#if loading}
-  <Spinner class="mt-4"></Spinner>
+  <div class="mt-4 flex justify-center items-center flex-col gap-y-2">
+    <Spinner />
+    <!-- <p class="opacity-75">Esperando respuesta...</p> -->
+  </div>
 {/if}
 
 {#if answer}
-  <p class="m-4">{answer}</p>
+  <div class="px-4">
+    <p
+      class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+    >
+      Respuesta:
+    </p>
+    <p>
+      {answer}
+    </p>
+  </div>
 {/if}
