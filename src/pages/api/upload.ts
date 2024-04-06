@@ -40,8 +40,6 @@ export const POST: APIRoute = async ({ request }) => {
 
   const { asset_id: id, secure_url: img_url } = result;
 
-  console.log({ id, img_url });
-
   return new Response(
     JSON.stringify({
       id,

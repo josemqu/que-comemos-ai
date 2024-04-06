@@ -1,10 +1,12 @@
 <script>
   import { Input, Label, Spinner } from "flowbite-svelte";
   import { appStatusInfo, setAppStatusError } from "../store";
-  const { id, img_url } = $appStatusInfo;
+  const { id, img_url, text } = $appStatusInfo;
 
   let answer = "";
   let loading = false;
+  // create a state for local host
+  let isLocalHost = window.location.hostname === "localhost";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,10 +35,12 @@
         }
 
         answer += incomingData;
+        // console.log(answer);
       };
     } catch (error) {
       setAppStatusError();
     } finally {
+      // loading = false;
     }
   };
 </script>
@@ -65,19 +69,29 @@
 {#if loading}
   <div class="mt-4 flex justify-center items-center flex-col gap-y-2">
     <Spinner />
-    <!-- <p class="opacity-75">Esperando respuesta...</p> -->
   </div>
 {/if}
 
 {#if answer}
-  <div class="px-4">
+  <div class="px-4 w-full">
     <p
       class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
     >
       Respuesta:
     </p>
-    <p>
+    <p class="text-sm text-gray-900">
       {answer}
+    </p>
+  </div>
+{:else if isLocalHost}
+  <div class="px-4">
+    <p
+      class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+    >
+      Respuesta de ejemplo:
+    </p>
+    <p class="text-sm text-gray-400">
+      {text}
     </p>
   </div>
 {/if}

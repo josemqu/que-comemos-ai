@@ -7,34 +7,34 @@ export const imageToBase64 = async (image_url: string) => {
   return Buffer.from(image_array_buffer).toString("base64");
 };
 
-export const anthropicResponse = async (
-  image_url: string,
-  question: string
-) => {
-  const image_data = await imageToBase64(image_url);
-  const response = await anthropic.messages.create({
-    model: "claude-3-haiku-20240307", //"claude-3-opus-20240229",
-    max_tokens: 1024,
-    messages: [
-      {
-        role: "user",
-        content: [
-          {
-            type: "image",
-            source: {
-              type: "base64",
-              media_type: "image/webp",
-              data: image_data,
+export const anthropicResponse = async (img_data: string, question: string) => {
+  const response = await anthropic.messages
+    .stream({
+      model: "claude-3-haiku-20240307", //"claude-3-opus-20240229",
+      max_tokens: 1024,
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "image",
+              source: {
+                type: "base64",
+                media_type: "image/webp",
+                data: `${img_data}`,
+              },
             },
-          },
-          {
-            type: "text",
-            text: `${question} En la primera oración, debes proporcionar el contenido total estimado del plato de lo solicitado en la consulta.`,
-          },
-        ],
-      },
-    ],
-  });
+            {
+              type: "text",
+              text: `${question} En la primera oración, debes proporcionar el contenido total estimado del plato de lo solicitado en la consulta.`,
+            },
+          ],
+        },
+      ],
+    })
+    .on("text", (text: any) => text);
 
-  return response.content[0].text;
+  // console.log(response);
+
+  return response;
 };

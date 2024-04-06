@@ -1,7 +1,7 @@
 import { type APIRoute } from "astro";
 import { responseSSE } from "../../utils/sse";
 import { openaiResponse } from "../../utils/openai";
-import { anthropicResponse } from "../../utils/anthropic";
+import { anthropicResponse, imageToBase64 } from "../../utils/anthropic";
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
@@ -24,12 +24,21 @@ export const GET: APIRoute = async ({ request }) => {
       status: 400,
     });
 
+  const img_data = await imageToBase64(img_url);
+
   return responseSSE({ request }, async (sendEvent) => {
-    const response = await anthropicResponse(img_url, question);
+    const response = await anthropicResponse(img_data, question);
 
     for await (const part of response) {
-      sendEvent(part);
+      const delta = part.type === "content_block_delta" ? part.delta.text : "";
+      sendEvent(delta);
     }
+
+    // const response = await openaiResponse(img_url, question);
+
+    // for await (const part of response) {
+    //   sendEvent(part.choices[0].delta.content);
+    // }
 
     sendEvent("__END__");
   });
