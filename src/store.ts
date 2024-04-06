@@ -9,9 +9,9 @@ export const APP_STATUS = {
 
 export const appStatus = writable(APP_STATUS.LOADED);
 export const appStatusInfo = writable({
-  id: "2df1b31e655d73f66f65d87258c96574",
+  id: "88632685d41375f2ccb15817d5b2bff0",
   img_url:
-    "https://res.cloudinary.com/djqrrlwav/image/upload/v1711654275/images/xmt7mvna5ipcizcjr7dw.webp",
+    "https://res.cloudinary.com/djqrrlwav/image/upload/v1712425251/images/jbedvztwq9t4bbuhtpcp.webp",
 });
 
 export const setAppStatusLoading = () => {
