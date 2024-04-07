@@ -35,7 +35,7 @@ export const POST: APIRoute = async ({ request }) => {
   const unit8Array = new Uint8Array(arrayBuffer);
 
   const result = await uploadStream(unit8Array, {
-    folder: "images",
+    folder: "images/food",
   });
 
   const { asset_id: id, secure_url: img_url } = result;
