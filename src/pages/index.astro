@@ -3,29 +3,37 @@ import Layout from '../layouts/Layout.astro';
 import App from '../components/App.svelte';
 ---
 
-<Layout title="AI Carbs Counter">
-	<!-- <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_2px),linear-gradient(to_bottom,#8080800a_1px,transparent_2px)] bg-[size:24px_24px]">
-		<div class="absolute left-0 right-0 top-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-white opacity-90 blur-[100px]">
-		</div>
-	</div> -->
-
+<Layout title="¿Qué Comemos?">
 	<div class="light">
-		<div class="fixed left-0 top-0 -z-10 h-full w-full"><div class="relative h-full w-full bg-white"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div></div></div>
-
-
-
-		<div class="grid place-content-center w-full gap-2">
-			<div class="relative mx-auto flex max-w-xl flex-col items-center">
-				<h1 class="opacity-70 sm:pb-4 sm:mt-8 mt-4 text-center font-bold text-3xl text-gray-900 dark:text-gray-50 sm:text-5xl">
-					<a href="/">¿Qué <span class="animate-text-gradient inline-flex bg-gradient-to-r from-neutral-900 via-slate-500 to-neutral-500 bg-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">comemos?</span></a>
-				</h1>
-				<p class="p-2 mt-6 text-center sm:text-lg leading-6 text-gray-600 dark:text-gray-200">
-					Obtené la información nutricional de tus comidas en segundos. Subí una foto de tu plato y conocé qué estás comiendo.
-				</p>
+		<div class="fixed left-0 top-0 -z-10 h-full w-full dark:hidden ">
+			<div class="relative h-full w-full bg-white">
+				<div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]">
+				</div>
 			</div>
-			<section class="container max-w-xl h-64 flex flex-col items-center sm:mt-6 mt-3">
-				<App client:idle />
-			</section>
+		</div>
+		<div class="fixed left-0 top-0 -z-10 h-full w-full hidden"> <!-- TO DO: DARK MODE -->
+			<div class="relative h-full w-full bg-slate-950">
+				<div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="grid place-content-center w-full gap-2">
+				<div class="relative mx-auto flex max-w-xl flex-col items-center">
+					<h1 class="opacity-70 sm:pb-4 sm:mt-9 mt-4 text-center font-bold text-3xl text-gray-900 dark:text-gray-50 sm:text-5xl">
+						<a href="/">¿Qué <span class="animate-text-gradient inline-flex bg-gradient-to-r from-neutral-900 via-slate-500 to-neutral-500 bg-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">comemos?</span></a>
+					</h1>
+					<p class="p-2 mt-3 sm:mt-5 text-center sm:text-lg leading-6 text-gray-600 dark:text-gray-200">
+						Obtené la información nutricional de tus comidas en segundos. Subí una foto de tu plato y
+						<span class="font-bold animate-text-gradient inline-flex bg-gradient-to-b from-neutral-900 via-slate-500 to-neutral-500 bg-[200%_auto] bg-clip-text leading-tight text-transparent dark:from-neutral-100 dark:via-slate-400 dark:to-neutral-400">
+							conocé lo qué estás comiendo.
+						</span>
+					</p>
+				</div>
+				<section class="container max-w-xl h-64 flex flex-col items-center sm:mt-6 mt-3">
+					<App client:idle />
+				</section>
+			</div>
 		</div>
 	</div>
 </Layout>

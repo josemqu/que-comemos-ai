@@ -13,7 +13,7 @@ const envMode =
     : "production";
 
 const initialStatus =
-  envMode === "development" ? APP_STATUS.LOADED : APP_STATUS.INIT;
+  envMode === "development" ? APP_STATUS.INIT : APP_STATUS.INIT;
 
 export const appStatus = writable(initialStatus);
 export const appStatusInfo = writable({
