@@ -30,8 +30,11 @@ export const GET: APIRoute = async ({ request }) => {
     const response = await anthropicResponse(img_data, question);
 
     for await (const part of response) {
-      const delta = part.type === "content_block_delta" ? part.delta.text : "";
-      sendEvent(delta);
+      if (part.type === "content_block_delta") {
+        sendEvent({ type: "text", data: part.delta.text });
+      } else if (part.type === "message_start") {
+        sendEvent({ type: "usage", data: part.message.usage });
+      }
     }
 
     // const response = await openaiResponse(img_url, question);

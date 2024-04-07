@@ -4,6 +4,7 @@
   const { id, img_url, text, envMode } = $appStatusInfo;
 
   let answer = "";
+  let tokens = 0;
   let loading = false;
 
   console.log({ envMode });
@@ -34,8 +35,10 @@
           return;
         }
 
-        answer += incomingData;
-        // console.log(answer);
+        if (incomingData.type === "text") answer += incomingData.data;
+        if (incomingData.type === "usage") tokens = incomingData.data;
+
+        console.log({ incomingData });
       };
     } catch (error) {
       setAppStatusError();
@@ -74,22 +77,36 @@
 
 {#if answer}
   <div class="px-4 w-full">
-    <p
-      class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
-    >
-      Respuesta:
-    </p>
+    <div class="flex align-middle justify-between">
+      <span
+        class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+      >
+        Respuesta:
+      </span>
+      <span
+        class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+      >
+        Tokens: {tokens.input_tokens} (entrada) {tokens.output_tokens} (salida)
+      </span>
+    </div>
     <p class="text-sm text-gray-900">
       {answer}
     </p>
   </div>
 {:else if envMode !== "production" && envMode === "development"}
   <div class="px-4">
-    <p
-      class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
-    >
-      Respuesta de ejemplo:
-    </p>
+    <div class="flex align-middle justify-between">
+      <span
+        class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+      >
+        Respuesta de ejemplo:
+      </span>
+      <span
+        class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+      >
+        Tokens: 0 (entrada) 0 (salida)
+      </span>
+    </div>
     <p class="text-sm text-gray-400">
       {text}
     </p>
