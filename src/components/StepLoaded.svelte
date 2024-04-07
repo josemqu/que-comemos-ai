@@ -7,8 +7,6 @@
   let tokens = 0;
   let loading = false;
 
-  console.log({ envMode });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,8 +35,6 @@
 
         if (incomingData.type === "text") answer += incomingData.data;
         if (incomingData.type === "usage") tokens = incomingData.data;
-
-        console.log({ incomingData });
       };
     } catch (error) {
       setAppStatusError();
@@ -49,12 +45,14 @@
 </script>
 
 <div class="flex align-middle justify-center max-w-80 m-4">
-  <img
-    src={img_url}
-    alt="Image of food"
-    class="rounded h-auto aspect-[4/3] object-cover"
-    aria-hidden="true"
-  />
+  <a href={img_url} target="_blank" rel="noopener noreferrer">
+    <img
+      src={img_url}
+      alt="Image of food"
+      class="rounded h-auto aspect-[4/3] object-cover"
+      aria-hidden="true"
+    />
+  </a>
 </div>
 
 <form class="max-w-80 w-full mx-4 px-4" on:submit={handleSubmit}>

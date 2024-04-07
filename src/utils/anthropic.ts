@@ -20,7 +20,7 @@ export const anthropicResponse = async (img_data: string, question: string) => {
               type: "image",
               source: {
                 type: "base64",
-                media_type: "image/webp",
+                media_type: "image/jpeg",
                 data: `${img_data}`,
               },
             },
@@ -33,8 +33,6 @@ export const anthropicResponse = async (img_data: string, question: string) => {
       ],
     })
     .on("text", (text: any) => text);
-
-  // console.log(response);
 
   return response;
 };

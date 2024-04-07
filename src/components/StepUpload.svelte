@@ -37,6 +37,7 @@
       setAppStatusLoading();
 
       const formData = new FormData();
+
       formData.append("file", acceptedFiles[0]);
 
       const res = await fetch("/api/upload/", {
@@ -49,7 +50,14 @@
       }
 
       const { id, img_url } = await res.json();
-      setAppStatusLoaded({ id, img_url });
+
+      // convert 'https://res.cloudinary.com/demo/image/upload/balloons.jpg' to 'https://res.cloudinary.com/demo/image/upload/w_512,h_512,c_fill/balloons.jpg'
+      const img_url_resized = img_url.replace(
+        "/upload/",
+        "/upload/w_320,h_320,c_fill/"
+      );
+
+      setAppStatusLoaded({ id, img_url: img_url_resized });
     }
   }
 </script>
