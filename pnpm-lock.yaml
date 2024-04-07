@@ -20,9 +20,6 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^7.5.0
     version: 7.5.0(astro@4.5.10)
-  '@squoosh/lib':
-    specifier: ^0.5.3
-    version: 0.5.3
   astro:
     specifier: ^4.5.10
     version: 4.5.10(typescript@5.4.3)
@@ -32,7 +29,6 @@ dependencies:
   openai:
     specifier: ^4.26.0
     version: 4.29.2
-  os: {specifier: ^0.1.2, version: 0.1.2}
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -1131,14 +1127,6 @@ packages:
 
   /@shikijs/core@1.2.1:
     resolution: {integrity: sha512-KaIS0H4EQ3KI2d++TjYqRNgwp8E3M/68e9veR4QtInzA7kKFgcjeiJqb80fuXW+blDy5fmd11PN9g9soz/3ANQ==}
-    dev: false
-
-  /@squoosh/lib@0.5.3:
-    resolution: {integrity: sha512-d/yn6M0P5rk+L0QOl/hzvlHDqXCCmEvwdcYu7sXwhyYDNskg9oxlZtZTBaKKbX6Vq0rzajI9GZkDC0zXlz/oRw==}
-    engines: {node: ' ^12.5.0 || ^14.0.0 || ^16.0.0 '}
-    dependencies:
-      wasm-feature-detect: 1.6.1
-      web-streams-polyfill: 3.3.3
     dev: false
 
   /@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.6):
@@ -3702,10 +3690,6 @@ packages:
       strip-ansi: 7.1.0
     dev: false
 
-  /os@0.1.2:
-    resolution: {integrity: sha512-ZoXJkvAnljwvc56MbvhtKVWmSkzV712k42Is2mA0+0KTSRakq5XXuXpjZjgAt9ctzl51ojhQWakQQpmOvXWfjQ==}
-    dev: false
-
   /p-limit@2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
     engines: {node: '>=6'}
@@ -5119,10 +5103,6 @@ packages:
 
   /vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
-    dev: false
-
-  /wasm-feature-detect@1.6.1:
-    resolution: {integrity: sha512-R1i9ED8UlLu/foILNB1ck9XS63vdtqU/tP1MCugVekETp/ySCrBZRk5I/zI67cI1wlQYeSonNm1PLjDHZDNg6g==}
     dev: false
 
   /web-namespaces@2.0.1:
