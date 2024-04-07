@@ -44,7 +44,9 @@
   };
 </script>
 
-<div class="flex align-middle justify-center max-w-80 m-4">
+<div
+  class="flex align-middle justify-center sm:max-w-80 sm:m-4 max-w-[40vw] m-2"
+>
   <a href={img_url} target="_blank" rel="noopener noreferrer">
     <img
       src={img_url}
@@ -59,12 +61,34 @@
   <Label for="question" class="font-medium block my-2">
     Pregunta lo que quieras saber...
   </Label>
-  <Input
-    id="question"
-    class=""
-    required
-    placeholder="¿Cuántas calorías tiene el plato?"
-  ></Input>
+  <div class="flex justify-between align-middle">
+    <Input
+      id="question"
+      class=""
+      required
+      placeholder="¿Cuántas calorías tiene el plato?"
+    ></Input>
+    <button
+      type="submit"
+      class="ml-2 w-12 h-10 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 border-2 transition-all duration-400 ease-in-out"
+    >
+      <!-- flecha -->
+      <svg
+        class="w-6 h-6 inline-block"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="3"
+          d="M9 5l7 7-7 7"
+        ></path>
+      </svg></button
+    >
+  </div>
 </form>
 
 {#if loading}
@@ -74,7 +98,7 @@
 {/if}
 
 {#if answer}
-  <div class="px-4 w-full">
+  <div class="p-4 w-full">
     <div class="flex align-middle justify-between">
       <span
         class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
@@ -82,7 +106,7 @@
         Respuesta:
       </span>
       <span
-        class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+        class="text-sm rtl:text-right text-gray-400 dark:text-gray-900 block my-2"
       >
         Tokens: {tokens.input_tokens} (entrada) {tokens.output_tokens} (salida)
       </span>
@@ -92,7 +116,7 @@
     </p>
   </div>
 {:else if envMode !== "production" && envMode === "development"}
-  <div class="px-4">
+  <div class="px-4 mt-4">
     <div class="flex align-middle justify-between">
       <span
         class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
@@ -100,7 +124,7 @@
         Respuesta de ejemplo:
       </span>
       <span
-        class="text-sm rtl:text-right text-gray-900 dark:text-gray-300 font-medium block my-2"
+        class="text-sm rtl:text-right text-gray-400 dark:text-gray-900 block my-2"
       >
         Tokens: 0 (entrada) 0 (salida)
       </span>

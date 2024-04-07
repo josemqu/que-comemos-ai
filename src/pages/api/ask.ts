@@ -27,21 +27,20 @@ export const GET: APIRoute = async ({ request }) => {
   const img_data = await imageToBase64(img_url);
 
   return responseSSE({ request }, async (sendEvent) => {
-    const response = await anthropicResponse(img_data, question);
+    try {
+      const response = await anthropicResponse(img_data, question);
 
-    for await (const part of response) {
-      if (part.type === "content_block_delta") {
-        sendEvent({ type: "text", data: part.delta.text });
-      } else if (part.type === "message_start") {
-        sendEvent({ type: "usage", data: part.message.usage });
+      for await (const part of response) {
+        if (part.type === "content_block_delta") {
+          sendEvent({ type: "text", data: part.delta.text });
+        } else if (part.type === "message_start") {
+          sendEvent({ type: "usage", data: part.message.usage });
+        }
       }
+    } catch (error) {
+      console.error(error);
+      sendEvent({ type: "error", data: error });
     }
-
-    // const response = await openaiResponse(img_url, question);
-
-    // for await (const part of response) {
-    //   sendEvent(part.choices[0].delta.content);
-    // }
 
     sendEvent("__END__");
   });

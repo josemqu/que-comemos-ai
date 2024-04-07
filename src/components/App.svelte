@@ -12,7 +12,7 @@
   <StepLoading />
 {:else if $appStatus === APP_STATUS.LOADED}
   <StepLoaded />
-  <Alert color="green" class="mx-4">
+  <Alert color="green" class="m-4">
     <span class="font-medium">¡Carga exitosa!</span>
     La imagen ha sido cargada exitosamente.
   </Alert>

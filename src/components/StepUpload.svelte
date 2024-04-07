@@ -57,6 +57,8 @@
         "/upload/w_320,h_320,c_fill/"
       );
 
+      console.log({ id, img_url_resized });
+
       setAppStatusLoaded({ id, img_url: img_url_resized });
     }
   }
