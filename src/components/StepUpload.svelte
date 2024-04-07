@@ -65,9 +65,11 @@
 </script>
 
 {#if files.accepted.length === 0}
-  <Dropzone accept="image/*" multiple={false} on:drop={handleFilesSelect}
-    >Arrastra y suelta una foto aquí
-  </Dropzone>
+  <div class="flex justify-center items-center flex-col mt-12">
+    <Dropzone accept="image/*" multiple={false} on:drop={handleFilesSelect}
+      >Arrastrá y soltá una foto aquí
+    </Dropzone>
+  </div>
 {/if}
 
 <ul>

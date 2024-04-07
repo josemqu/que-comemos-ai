@@ -44,14 +44,12 @@
   };
 </script>
 
-<div
-  class="flex align-middle justify-center sm:max-w-80 sm:m-4 max-w-[40vw] m-2"
->
+<div class="flex align-middle justify-center w-full sm:m-4 m-2 px-4 max-h-60">
   <a href={img_url} target="_blank" rel="noopener noreferrer">
     <img
       src={img_url}
       alt="Image of food"
-      class="rounded h-auto aspect-[4/3] object-cover"
+      class="rounded h-full aspect-[16/9] sm:aspect-[4/3] object-cover"
       aria-hidden="true"
     />
   </a>
@@ -93,7 +91,7 @@
 
 {#if loading}
   <div class="mt-4 flex justify-center items-center flex-col gap-y-2">
-    <Spinner />
+    <Spinner color="blue" />
   </div>
 {/if}
 
