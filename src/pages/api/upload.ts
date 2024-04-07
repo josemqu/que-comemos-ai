@@ -32,9 +32,9 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const arrayBuffer = await file.arrayBuffer();
-  const unit8Array = new Uint8Array(arrayBuffer);
+  const uint8Array = new Uint8Array(arrayBuffer);
 
-  const result = await uploadStream(unit8Array, {
+  const result = await uploadStream(uint8Array, {
     folder: "images/food",
   });
 

@@ -1,4 +1,5 @@
 <script>
+  import ImageResize from "image-resize";
   import {
     setAppStatusLoading,
     setAppStatusError,
@@ -10,68 +11,30 @@
     rejected: [],
   };
 
-  let videoSource = null;
   let loading = false;
-  const getVideoCamera = async () => {
-    try {
-      loading = true;
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-      });
-      videoSource.srcObject = stream;
-      videoSource.play();
-      loading = false;
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  async function handleFilesSelect(e) {
-    console.log(e);
-    const { acceptedFiles, fileRejections } = e.detail;
-
-    files.accepted = [...files.accepted, ...acceptedFiles];
-    files.rejected = [...files.rejected, ...fileRejections];
-
-    if (acceptedFiles.length > 0) {
-      setAppStatusLoading();
-
-      const formData = new FormData();
-
-      formData.append("file", acceptedFiles[0]);
-
-      const res = await fetch("/api/upload/", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) {
-        setAppStatusError();
-      }
-
-      const { id, img_url } = await res.json();
-
-      const img_url_resized = img_url.replace(
-        "/upload/",
-        "/upload/w_320,h_320,c_fill/"
-      );
-
-      console.log({ id, img_url_resized });
-
-      setAppStatusLoaded({ id, img_url: img_url_resized });
-    }
-  }
+  const imageResize = new ImageResize({
+    width: 512,
+    format: "jpg",
+    quality: 0.5,
+  });
 
   async function handleImageSelect(e) {
-    console.log(e);
-    const { files } = e.target;
+    try {
+      const file = e.target.files[0];
 
-    if (files.length > 0) {
-      setAppStatusLoading();
+      if (file && file.type.includes("image")) setAppStatusLoading();
+
+      let resizedImage = await imageResize.play(file);
+
+      const newImage = new File([resizedImage], file.name, {
+        type: "image/jpeg",
+      });
+
+      loading = true;
 
       const formData = new FormData();
-
-      formData.append("file", files[0]);
+      formData.append("file", newImage);
 
       const res = await fetch("/api/upload/", {
         method: "POST",
@@ -80,19 +43,21 @@
 
       if (!res.ok) {
         setAppStatusError();
+      } else {
+        console.log("Image uploaded successfully");
+        loading = false;
+
+        const { id, img_url } = await res.json();
+
+        const img_url_resized = img_url.replace(
+          "/upload/",
+          "/upload/w_512,h_512,c_fill/"
+        );
+
+        setAppStatusLoaded({ id, img_url: img_url_resized });
       }
-
-      const { id, img_url } = await res.json();
-
-      // convert 'https://res.cloudinary.com/demo/image/upload/balloons.jpg' to 'https://res.cloudinary.com/demo/image/upload/w_512,h_512,c_fill/balloons.jpg'
-      const img_url_resized = img_url.replace(
-        "/upload/",
-        "/upload/w_320,h_320,c_fill/"
-      );
-
-      console.log({ id, img_url_resized });
-
-      setAppStatusLoaded({ id, img_url: img_url_resized });
+    } catch (error) {
+      console.error(error);
     }
   }
 
