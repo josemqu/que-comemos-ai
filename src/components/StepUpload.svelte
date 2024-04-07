@@ -96,7 +96,7 @@
     }
   }
 
-  async function handleImageUpload() {
+  async function handleImageUpload(e) {
     const input = document.querySelector("input[type=file]");
     input.click();
   }
@@ -104,12 +104,12 @@
 
 {#if files.accepted.length === 0}
   <div class="flex justify-center items-center flex-col mt-4">
-    <div
+    <button
       class="flex items-center text-slate-400 p-4 h-20 bg-slate-50 border-dashed border-slate-200 border-2 rounded cursor-pointer"
       on:click={handleImageUpload}
     >
       Cargá la foto de tu comida acá!
-    </div>
+    </button>
     <input
       class="hidden"
       type="file"
