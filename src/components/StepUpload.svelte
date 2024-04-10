@@ -51,7 +51,7 @@
 
         const img_url_resized = img_url.replace(
           "/upload/",
-          "/upload/w_512,h_512,c_fill/"
+          "/upload/w_512,c_fill/"
         );
 
         setAppStatusLoaded({ id, img_url: img_url_resized });
