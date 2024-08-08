@@ -17,7 +17,8 @@ const uploadStream = async (
     cloudinary.uploader
       .upload_stream(options, (error, result) => {
         if (result) resolve(result);
-        reject(error);
+        // handle rejection
+        return reject(JSON.stringify(error?.message));
       })
       .end(buffer);
   });
