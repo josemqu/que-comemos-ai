@@ -7,19 +7,19 @@ export const APP_STATUS = {
   ERROR: -1,
 };
 
-const envMode =
-  import.meta.env.ENV_MODE ?? window.location.hostname === "localhost"
-    ? "development"
-    : "production";
+const envMode = "development";
 
 const initialStatus =
-  envMode === "development" ? APP_STATUS.INIT : APP_STATUS.INIT;
+  envMode === "development" ? APP_STATUS.LOADED : APP_STATUS.INIT;
 
 export const appStatus = writable(initialStatus);
 export const appStatusInfo = writable({
   id: "d209bc3ddd757dae369614717dc384c3",
   img_url:
-    "https://res.cloudinary.com/djqrrlwav/image/upload/w_320,h_320,c_fill/v1712458705/images/rimoxl5utpjz9kk22bnt.jpg",
+    "https://res.cloudinary.com/djqrrlwav/image/upload/v1724117726/images/food/srev2m1pq4mqm3byjzir.jpg",
+  //"https://res.cloudinary.com/djqrrlwav/image/upload/v1724157923/images/food/matuhqwwnhzl3m4eextb.jpg",
+  //"https://res.cloudinary.com/djqrrlwav/image/upload/v1724861622/images/food/gw6zane6gy1555xdnagx.jpg",
+  //"https://res.cloudinary.com/djqrrlwav/image/upload/w_320,h_320,c_fill/v1712458705/images/rimoxl5utpjz9kk22bnt.jpg",
   text: "El plato presentado contiene alimentos con un bajo contenido glucémico, como las verduras (zucchini, tomates, lechuga) y el salmón. Aunque el maíz dulce tiene un contenido glucémico más alto, la cantidad en el plato es relativamente pequeña en comparación con los demás componentes. Por lo tanto, el contenido glucémico total estimado del plato es bajo.",
   envMode: envMode,
 });

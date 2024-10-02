@@ -27,7 +27,7 @@ export const anthropicResponse = async (img_data: string, question: string) => {
             },
             {
               type: "text",
-              text: `${question} En la primera oración, debes proporcionar el contenido total estimado del plato de lo solicitado en la consulta.`,
+              text: `${question} Evita usar frases como "no puedo determinar con exactitud los ingredientes ni las cantidades" y considera un plato de tamaño típico. Abrevia palabras largas como "aproximadamente" utilizando "aprox" ó "~". En la primera oración, debes proporcionar el contenido total estimado del plato de lo solicitado en la consulta. Si no puedes determinar algún ingrediente o su cantidad, ignora ese ingrediente. Finalmente, entrega el contenido nutricional total del plato en una tabla. Todo el texto debe estar en formato HTML. La tabla estará ubicada en un div con estilo "display: flex; align-items: center; justify-content: center; margin-top: 1rem;". Las celdas deben tener bordes colapsados de 1px y color gris claro, ancho de 50%, las celdas deben tener padding-x de 5px, y alineados a la izquierda los contenidos de las celdas y headers.`,
             },
           ],
         },

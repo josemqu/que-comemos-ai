@@ -109,9 +109,10 @@
         Tokens: {tokens.input_tokens} (entrada) {tokens.output_tokens} (salida)
       </span>
     </div>
-    <p class="text-sm text-gray-900">
-      {answer}
-    </p>
+    <!-- answer is html so we need to parse it -->
+    <div class="text-sm text-gray-400">
+      {@html answer}
+    </div>
   </div>
 {:else if envMode !== "production" && envMode === "development"}
   <div class="px-4 mt-4">

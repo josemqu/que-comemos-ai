@@ -57,7 +57,10 @@
         setAppStatusLoaded({ id, img_url: img_url_resized });
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      setAppStatusError();
+      loading = false;
+      return;
     }
   }
 
