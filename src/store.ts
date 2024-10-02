@@ -7,10 +7,7 @@ export const APP_STATUS = {
   ERROR: -1,
 };
 
-const envMode = "development";
-
-const initialStatus =
-  envMode === "development" ? APP_STATUS.LOADED : APP_STATUS.INIT;
+const initialStatus = APP_STATUS.INIT;
 
 export const appStatus = writable(initialStatus);
 export const appStatusInfo = writable({
